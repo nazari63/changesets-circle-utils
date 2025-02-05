@@ -1,7 +1,7 @@
 import { readChangesetState } from "@changesets/release-utils";
-import { github } from "../githubContext";
-import { execCommand } from "../gitUtils";
-import { getReleasedPackages } from "../packageUtils";
+import { github } from "../githubContext.js";
+import { execCommand } from "../gitUtils.js";
+import { getReleasedPackages } from "../packageUtils.js";
 
 /**
  * Publishes snapshots on $CIRCLE_BRANCH
