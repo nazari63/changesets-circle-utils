@@ -47,6 +47,7 @@ export async function publishSnapshots() {
 
     const changesetPublishOutput = await execCommand('pnpm changeset', [
         'publish',
+        '--no-git-tag',
         '--tag',
         `${sanitizedBranchName}`,
     ]);
