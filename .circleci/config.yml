@@ -13,7 +13,6 @@ commands:
       - run:
           name: Install pnpm dependencies
           command: pnpm install
-      - nx/set-shas
       - run:
           name: Build
           command: pnpm build
