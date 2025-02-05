@@ -18,16 +18,16 @@ export const execCommand = (command: string, params: string[]): Promise<ExecComm
   });
 }
 
-export const setupUser = async () => {
+export const configureBotUserInfo = async () => {
   await execCommand("git", [
     "config",
     "user.name",
-    `"github-actions[bot]"`,
+    `"changesets-circle[bot]"`,
   ]);
   await execCommand("git", [
     "config",
     "user.email",
-    `"github-actions[bot]@users.noreply.github.com"`,
+    `"changesets-circle[bot]@users.noreply.circle.com"`,
   ]);
 };
 

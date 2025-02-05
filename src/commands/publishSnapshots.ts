@@ -1,7 +1,6 @@
 import { readChangesetState } from "@changesets/release-utils";
 import { github } from "../githubContext.js";
 import { execCommand } from "../gitUtils.js";
-import { getReleasedPackages } from "../packageUtils.js";
 
 /**
  * Publishes snapshots on $CIRCLE_BRANCH
@@ -57,10 +56,5 @@ export async function publishSnapshots() {
         process.exit(1);
     }
 
-    const { published, publishedPackages } = await getReleasedPackages({
-        changesetPublishOutput,
-    });
-
-    console.info('published', published);
-    console.info('publishedPackages', JSON.stringify(publishedPackages, null, 2));
+    console.info(changesetPublishOutput.stdout);
 }

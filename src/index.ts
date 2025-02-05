@@ -6,14 +6,8 @@ import { Octokit } from "octokit";
 import { releaseAndVersionPR } from "./commands/releaseAndVersion.js";
 import { fileURLToPath } from "url";
 import { publishSnapshots } from "./commands/publishSnapshots.js";
-
-if (!process.env.GITHUB_TOKEN) {
-    throw new Error('GITHUB_TOKEN is not set');
-}
-
-const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN,
-});
+import { configureBotUserInfo } from "./gitUtils.js";
+import { publishRelease } from "./commands/publishRelease.js";
 
 const program = new Command();
 
@@ -27,13 +21,30 @@ program.version(version).description('CircleCI utils for @changesets');
 program
     .command('release')
     .action(async () => {
+        if (!process.env.GITHUB_TOKEN) {
+            throw new Error('GITHUB_TOKEN is not set');
+        }
+        
+        const octokit = new Octokit({
+            auth: process.env.GITHUB_TOKEN,
+        });
+
+        await configureBotUserInfo();
         await releaseAndVersionPR(octokit);
     })
 
 program
     .command('publish-snapshots')
     .action(async () => {
+        await configureBotUserInfo();
         await publishSnapshots();
+    })
+
+program
+    .command('publish-release')
+    .action(async () => {
+        await configureBotUserInfo();
+        await publishRelease();
     })
 
 program.parse(process.argv);
