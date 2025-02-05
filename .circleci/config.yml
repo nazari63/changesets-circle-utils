@@ -54,8 +54,9 @@ workflows:
     jobs:
       - lint
       - typecheck
-      - publish
+      - publish:
+          context: npm-publish
           filters:
             branches:
-              only: main
-            context: npm-publish
+              only:
+                - main
