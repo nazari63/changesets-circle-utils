@@ -1,6 +1,6 @@
 {
   "name": "changesets-circle-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CircleCI utils for @changesets",
   "main": "index.js",
   "type": "module",
