@@ -46,6 +46,9 @@ jobs:
           name: Set NPM Credentials
           command: pnpm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
       - run:
+          name: Bump NPM Package Version
+          command: ./scripts/bump_npm_version.sh
+      - run:
           name: Publish to NPM Registry
           command: pnpm publish
 
