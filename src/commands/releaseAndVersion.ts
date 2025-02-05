@@ -57,7 +57,7 @@ export async function releaseAndVersionPR(octokit: Octokit) {
 
     const cwd = process.cwd();
     const versionsByDirectory = await getVersionsByDirectory(cwd);
-    await execCommand('pnpm changesets', ['version']);
+    await execCommand('pnpm changeset', ['version']);
 
     const changedPackages = await getChangedPackages(cwd, versionsByDirectory);
     const changedPackagesInfo = changedPackages.map((pkg) => {
