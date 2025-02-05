@@ -3,10 +3,10 @@ import type { PreState } from '@changesets/types';
 export type GetVersionPrBodyParams = {
     preState: PreState | undefined;
     changedPackagesInfo: {
-        highestLevel: Number,
-        private: Boolean,
-        content: String,
-        header: String,
+        highestLevel: number,
+        private: boolean,
+        content: string,
+        header: string,
     }[];
     prBodyMaxCharacters: number;
     branch: string;
@@ -22,7 +22,7 @@ export async function getVersionPrBody({
         When you're ready to do a release, you can merge this and the packages will be published to npm automatically.
         If you're not ready to do a release yet, that's fine, whenever you add more changesets to ${branch}, this PR will be updated.
     `;
-    let messagePrestate = !!preState
+    let messagePrestate = preState
       ? `⚠️⚠️⚠️⚠️⚠️⚠️
   
   \`${branch}\` is currently in **pre mode** so this branch has prereleases rather than normal releases. If you want to exit prereleases, run \`changeset pre exit\` on \`${branch}\`.

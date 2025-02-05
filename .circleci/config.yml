@@ -1,0 +1,45 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@6.3.0
+
+commands:
+  setup:
+    description: "Setup"
+    steps:
+      - checkout
+      - node/install-pnpm:
+          version: '9'
+      - run:
+          name: Install pnpm dependencies
+          command: pnpm install
+      - nx/set-shas
+      - run:
+          name: Build
+          command: pnpm build
+
+jobs:
+  lint:
+    executor:
+      name: node/default
+      tag: '22.10'
+    steps:
+      - setup
+      - run:
+          name: Lint
+          command: pnpm lint
+  typecheck:
+    executor:
+      name: node/default
+      tag: '22.10'
+    steps:
+      - setup
+      - run:
+          name: Typecheck
+          command: pnpm typecheck
+
+workflows:
+  main:
+    jobs:
+      - lint
+      - typecheck

@@ -86,11 +86,11 @@ export async function releaseAndVersionPR(octokit: Octokit) {
         prBodyMaxCharacters: MAX_CHARACTERS_PER_MESSAGE,
     });
         
-    const finalPrTitle = `${DEFAULT_PR_TITLE}${!!preState ? ` (${preState.tag})` : ""}`;
+    const finalPrTitle = `${DEFAULT_PR_TITLE}${preState ? ` (${preState.tag})` : ""}`;
 
     if (!(await gitUtils.checkIfClean())) {
         const finalCommitMessage = `${DEFAULT_COMMIT_MESSAGE}${
-        !!preState ? ` (${preState.tag})` : ""
+        preState ? ` (${preState.tag})` : ""
         }`;
         await gitUtils.commitAll(finalCommitMessage);
     }

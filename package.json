@@ -12,7 +12,10 @@
     "src/*"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "typecheck": "tsc --noEmit"
   },
   "license": "MIT",
   "dependencies": {
@@ -24,6 +27,7 @@
   "devDependencies": {
     "@changesets/types": "^6.0.0",
     "@types/node": "^22.13.1",
+    "oxlint": "^0.15.9",
     "typescript": "^5.7.3"
   }
 }
