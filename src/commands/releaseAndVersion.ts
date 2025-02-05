@@ -53,7 +53,7 @@ export async function releaseAndVersionPR(octokit: Octokit) {
 
     const versionBranch = `changeset-release/${github.context.branch}`;
     await gitUtils.switchToMaybeExistingBranch(versionBranch);
-    await gitUtils.reset(github.context.sha ?? 'HEAD');
+    await gitUtils.reset(github.context.sha);
 
     const cwd = process.cwd();
     const versionsByDirectory = await getVersionsByDirectory(cwd);
