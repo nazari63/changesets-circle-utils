@@ -1,0 +1,29 @@
+{
+  "name": "changesets-circle-utils",
+  "version": "1.0.0",
+  "description": "CircleCI utils for @changesets",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "changesets-circle": "dist/index.js"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@changesets/release-utils": "^0.2.2",
+    "@manypkg/get-packages": "^2.2.2",
+    "commander": "^13.1.0",
+    "octokit": "^4.1.0"
+  },
+  "devDependencies": {
+    "@changesets/types": "^6.0.0",
+    "@types/node": "^22.13.1",
+    "typescript": "^5.7.3"
+  }
+}
