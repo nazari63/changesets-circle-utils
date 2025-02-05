@@ -38,7 +38,8 @@ export type PublishResult = {
 export async function getReleasedPackages({
     changesetPublishOutput,
     cwd = process.cwd(),
-  }: PublishOptions): Promise<PublishResult> {    
+  }: PublishOptions): Promise<PublishResult> {
+    console.log('getReleasedPackages', changesetPublishOutput.stdout);
     const { packages, tool } = await getPackages(cwd);
     const releasedPackages: Package[] = [];
   
