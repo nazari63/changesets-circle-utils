@@ -37,7 +37,7 @@ export async function publishSnapshots() {
     const sanitizedBranchName = github.context.branch.replace(/\//g, '-');
     
     // Versions are published as {version}-{$CIRCLE_BRANCH}-${timestamp}
-    const versionResult = await execCommand('pnpm changesets', ['version', '--snapshot', `${sanitizedBranchName}`]);
+    const versionResult = await execCommand('pnpm changeset', ['version', '--snapshot', `${sanitizedBranchName}`]);
     if (versionResult.stderr.includes('No unreleased changesets found')) {
         console.log(
             '\nNo changesets found. In order to publish a snapshot version, you must have at least one changeset committed.\n',
@@ -45,12 +45,17 @@ export async function publishSnapshots() {
         return;
     }
 
-    const changesetPublishOutput = await execCommand('pnpm changesets', [
+    const changesetPublishOutput = await execCommand('pnpm changeset', [
         'publish',
         '--no-git-tag',
         '--tag',
         `${sanitizedBranchName}`,
     ]);
+
+    if (changesetPublishOutput.error) {
+        console.error(changesetPublishOutput.error);
+        process.exit(1);
+    }
 
     const { published, publishedPackages } = await getReleasedPackages({
         changesetPublishOutput,
