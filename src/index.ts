@@ -5,6 +5,7 @@ import { Octokit } from "octokit";
 
 import { releaseAndVersionPR } from "./commands/releaseAndVersion.js";
 import { fileURLToPath } from "url";
+import { publishSnapshots } from "./commands/publishSnapshots.js";
 
 if (!process.env.GITHUB_TOKEN) {
     throw new Error('GITHUB_TOKEN is not set');
@@ -27,6 +28,12 @@ program
     .command('release')
     .action(async () => {
         await releaseAndVersionPR(octokit);
+    })
+
+program
+    .command('publish-snapshots')
+    .action(async () => {
+        await publishSnapshots();
     })
 
 program.parse(process.argv);

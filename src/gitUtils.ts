@@ -1,6 +1,6 @@
 import { exec } from "child_process"
 
-type ExecCommandResult = {
+export type ExecCommandResult = {
   error: Error | null;
   stdout: string;
   stderr: string;

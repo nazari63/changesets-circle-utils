@@ -21,6 +21,8 @@ const DEFAULT_PR_TITLE = "Version Packages";
 /**
  * Release and version packages
  * 
+ * $GITHUB_TOKEN must be set in the environment in order to create/update a PR
+ * 
  * Steps:
  * 1. Get the changesets
  * 2. Validate changesets exist and are not empty
