@@ -7,11 +7,11 @@ type ExecCommandResult = {
 }
 
 export const execCommand = (command: string, params: string[]): Promise<ExecCommandResult> => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     exec(`${command} ${params.join(" ")}`, (error, stdout, stderr) => {
         if (error) {
           console.error(`Error executing command: ${error.message}`);
-          reject({ error, stdout, stderr });
+          resolve({ error, stdout, stderr });
         }
         resolve({ error: null, stdout, stderr });
       })
