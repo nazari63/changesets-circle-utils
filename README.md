@@ -5,7 +5,7 @@ CircleCI utils for @changesets
 ### Quick Start
 
 ```
-pnpm add changesets-circle-utils
+pnpm add @eth-optimism/changesets-circle-utils
 ```
 
 ## Commands
