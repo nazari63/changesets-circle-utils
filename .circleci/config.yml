@@ -58,7 +58,7 @@ workflows:
       - lint
       - typecheck
       - publish:
-          context: npm-publish
+          context: super-cli-repo
           filters:
             branches:
               only:
