@@ -2,6 +2,12 @@
 
 CircleCI utils for @changesets
 
+### Quick Start
+
+```
+pnpm add changesets-circle-utils
+```
+
 ## Commands
 
 ### release
