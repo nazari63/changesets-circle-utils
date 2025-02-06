@@ -50,7 +50,7 @@ jobs:
           command: ./scripts/bump_npm_version.sh
       - run:
           name: Publish to NPM Registry
-          command: pnpm publish --no-git-checks
+          command: pnpm publish --no-git-checks --access public 
 
 workflows:
   main:
